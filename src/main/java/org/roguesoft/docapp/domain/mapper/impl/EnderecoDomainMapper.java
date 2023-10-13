@@ -8,6 +8,8 @@ import java.util.Objects;
 
 public class EnderecoDomainMapper {
 
+    private EnderecoDomainMapper(){}
+
     public static void toModel(final Individuo model, final EnderecoDTO endereco){
         model.setRua(endereco.getRua());
         model.setBairro(endereco.getBairro());

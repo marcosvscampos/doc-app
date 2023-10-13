@@ -8,9 +8,9 @@ import org.hibernate.internal.util.config.ConfigurationHelper;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.type.Type;
 import org.hibernate.type.spi.TypeConfiguration;
-import org.roguesoft.docapp.infrastructure.utils.RandomValueGenerator;
 import org.roguesoft.docapp.infrastructure.utils.RandomNumberGenerator;
 import org.roguesoft.docapp.infrastructure.utils.RandomStringGenerator;
+import org.roguesoft.docapp.infrastructure.utils.RandomValueGenerator;
 
 import java.io.Serializable;
 import java.util.Properties;
@@ -21,9 +21,9 @@ public class CustomSequenceIdGenerator extends SequenceStyleGenerator {
     public static final String VALUE_PREFIX_DEFAULT = "";
     private String valuePrefix;
 
-    private final RandomValueGenerator stringValueGenerator;
+    private final transient RandomValueGenerator stringValueGenerator;
 
-    private final RandomValueGenerator numberValueGenerator;
+    private final transient RandomValueGenerator numberValueGenerator;
 
     public CustomSequenceIdGenerator() {
         this.stringValueGenerator = new RandomStringGenerator();
@@ -35,7 +35,9 @@ public class CustomSequenceIdGenerator extends SequenceStyleGenerator {
                                  Object object) throws HibernateException {
 
 
-        return valuePrefix + "-" + numberValueGenerator.generate(8) + "-" + stringValueGenerator.generate(3);
+        return valuePrefix +
+                "-" + this.numberValueGenerator.generate(8) +
+                "-" + this.stringValueGenerator.generate(3);
     }
 
     @Override

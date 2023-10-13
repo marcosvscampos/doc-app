@@ -1,7 +1,18 @@
 package org.roguesoft.docapp.infrastructure.utils;
 
-public interface RandomValueGenerator {
+import lombok.Getter;
 
-    String generate(final Integer size);
+import java.util.Random;
+
+@Getter
+public abstract class RandomValueGenerator {
+
+    private final Random random;
+
+    protected RandomValueGenerator(){
+        this.random = new Random();
+    }
+
+    public abstract String generate(final Integer size);
 
 }

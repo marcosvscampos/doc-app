@@ -2,7 +2,6 @@ package org.roguesoft.docapp.application.api;
 
 import lombok.RequiredArgsConstructor;
 import org.roguesoft.docapp.application.dto.ConvenioDTO;
-import org.roguesoft.docapp.application.dto.PacienteDTO;
 import org.roguesoft.docapp.application.dto.ResponseDTO;
 import org.roguesoft.docapp.domain.service.DomainService;
 import org.springframework.http.MediaType;
@@ -27,8 +26,8 @@ public class ConvenioController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping(value = "/{convenioId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ConvenioDTO> recuperarConvenioPorId(@PathVariable(name = "convenioId")final String id){
+    @GetMapping(value = "/{cod_convenio}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ConvenioDTO> recuperarConvenioPorId(@PathVariable(name = "cod_convenio")final String id){
         return ResponseEntity.ok(convenioService.findById(id));
     }
 

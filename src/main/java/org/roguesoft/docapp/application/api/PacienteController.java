@@ -26,8 +26,8 @@ public class PacienteController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping(value = "/{pacienteId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<PacienteDTO> recuperarPacientePorId(@PathVariable(name = "pacienteId")final String id){
+    @GetMapping(value = "/{cod_paciente}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<PacienteDTO> recuperarPacientePorId(@PathVariable(name = "cod_paciente")final String id){
         return ResponseEntity.ok(pacienteService.findById(id));
     }
 
