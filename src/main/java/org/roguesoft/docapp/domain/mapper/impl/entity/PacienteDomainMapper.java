@@ -1,4 +1,4 @@
-package org.roguesoft.docapp.domain.mapper.impl;
+package org.roguesoft.docapp.domain.mapper.impl.entity;
 
 import org.roguesoft.docapp.application.dto.IndividuoDTO;
 import org.roguesoft.docapp.application.dto.PacienteDTO;
@@ -12,7 +12,7 @@ public class PacienteDomainMapper implements DomainMapper<PacienteDTO, Paciente>
 
     private final DomainMapper<IndividuoDTO, Individuo> individuoDomainMapper;
 
-    public PacienteDomainMapper(final  DomainMapper<IndividuoDTO, Individuo> domainMapper) {
+    public PacienteDomainMapper(final DomainMapper<IndividuoDTO, Individuo> domainMapper) {
         this.individuoDomainMapper = domainMapper;
     }
 

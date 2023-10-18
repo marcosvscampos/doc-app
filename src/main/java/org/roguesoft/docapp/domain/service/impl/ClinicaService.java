@@ -2,6 +2,7 @@ package org.roguesoft.docapp.domain.service.impl;
 
 import org.roguesoft.docapp.application.dto.ClinicaDTO;
 import org.roguesoft.docapp.application.dto.ResponseDTO;
+import org.roguesoft.docapp.application.dto.filter.Filter;
 import org.roguesoft.docapp.domain.mapper.DomainMapper;
 import org.roguesoft.docapp.domain.service.DomainService;
 import org.roguesoft.docapp.infrastructure.model.Clinica;
@@ -9,11 +10,9 @@ import org.roguesoft.docapp.infrastructure.model.Convenio;
 import org.roguesoft.docapp.infrastructure.repository.ClinicaRepository;
 import org.roguesoft.docapp.infrastructure.repository.ConvenioRepository;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Collections;
-import java.util.List;
 
 @Service
 public class ClinicaService implements DomainService<ClinicaDTO> {
@@ -39,7 +38,7 @@ public class ClinicaService implements DomainService<ClinicaDTO> {
 
     @Override
     @Transactional
-    public ResponseDTO create(ClinicaDTO request) {
+    public ResponseDTO create(final ClinicaDTO request) {
         Clinica clinica = domainMapper.toModel(request);
 
         Convenio convenio = convenioRepository.findById(request.getConvenioId())
@@ -59,7 +58,7 @@ public class ClinicaService implements DomainService<ClinicaDTO> {
     }
 
     @Override
-    public List<ClinicaDTO> findAll() {
-        return Collections.emptyList();
+    public Page<ClinicaDTO> findAll(final Filter filter) {
+        return null;
     }
 }

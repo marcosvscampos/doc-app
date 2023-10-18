@@ -2,15 +2,15 @@ package org.roguesoft.docapp.domain.service.impl;
 
 import org.roguesoft.docapp.application.dto.ConvenioDTO;
 import org.roguesoft.docapp.application.dto.ResponseDTO;
+import org.roguesoft.docapp.application.dto.filter.Filter;
 import org.roguesoft.docapp.domain.mapper.DomainMapper;
 import org.roguesoft.docapp.domain.service.DomainService;
 import org.roguesoft.docapp.infrastructure.model.Convenio;
 import org.roguesoft.docapp.infrastructure.repository.ConvenioRepository;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 public class ConvenioService implements DomainService<ConvenioDTO> {
@@ -22,7 +22,7 @@ public class ConvenioService implements DomainService<ConvenioDTO> {
     @Value("${server.servlet.context-path}")
     private String contextPath;
 
-    private final static String PATH_NAME = "convenios";
+    private static final String PATH_NAME = "convenios";
 
     public ConvenioService(final ConvenioRepository convenioRepository,
                            final DomainMapper<ConvenioDTO, Convenio> convenioDomainMapper) {
@@ -32,7 +32,7 @@ public class ConvenioService implements DomainService<ConvenioDTO> {
 
     @Override
     @Transactional
-    public ResponseDTO create(ConvenioDTO request) {
+    public ResponseDTO create(final ConvenioDTO request) {
         Convenio convenio = repository.save(domainMapper.toModel(request));
         return new ResponseDTO(contextPath, PATH_NAME, convenio.getId());
     }
@@ -45,7 +45,7 @@ public class ConvenioService implements DomainService<ConvenioDTO> {
     }
 
     @Override
-    public List<ConvenioDTO> findAll() {
+    public Page<ConvenioDTO> findAll(final Filter filter) {
         return null;
     }
 }

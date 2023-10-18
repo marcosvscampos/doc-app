@@ -1,8 +1,8 @@
 package org.roguesoft.docapp.domain.service;
 
 import org.roguesoft.docapp.application.dto.ResponseDTO;
-
-import java.util.List;
+import org.roguesoft.docapp.application.dto.filter.Filter;
+import org.springframework.data.domain.Page;
 
 public interface DomainService<T> {
 
@@ -10,5 +10,5 @@ public interface DomainService<T> {
 
     T findById(final String id);
 
-    List<T> findAll();
+    Page<T> findAll(final Filter filter);
 }

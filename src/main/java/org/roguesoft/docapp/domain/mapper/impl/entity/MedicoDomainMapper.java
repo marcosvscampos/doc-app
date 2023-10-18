@@ -1,4 +1,4 @@
-package org.roguesoft.docapp.domain.mapper.impl;
+package org.roguesoft.docapp.domain.mapper.impl.entity;
 
 import org.roguesoft.docapp.application.dto.ClinicaDTO;
 import org.roguesoft.docapp.application.dto.MedicoDTO;

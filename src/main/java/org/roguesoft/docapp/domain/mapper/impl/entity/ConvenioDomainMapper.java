@@ -1,4 +1,4 @@
-package org.roguesoft.docapp.domain.mapper.impl;
+package org.roguesoft.docapp.domain.mapper.impl.entity;
 
 import org.roguesoft.docapp.application.dto.ConvenioDTO;
 import org.roguesoft.docapp.application.dto.IndividuoDTO;
