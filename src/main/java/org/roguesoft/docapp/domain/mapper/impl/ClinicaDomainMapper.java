@@ -27,12 +27,13 @@ public class ClinicaDomainMapper implements DomainMapper<ClinicaDTO, Clinica> {
     }
 
     @Override
-    public ClinicaDTO toDto(Clinica clinica) {
-        ConvenioDTO convenioDTO = convenioDomainMapper.toDto(clinica.getConvenio());
+    public ClinicaDTO toDto(Clinica model) {
+        ConvenioDTO convenioDTO = convenioDomainMapper.toDto(model.getConvenio());
         return ClinicaDTO.clinicaBuilder()
-                .nome(clinica.getNome())
-                .email(clinica.getEmail())
-                .telefone(clinica.getTelefone())
+                .id(model.getId())
+                .nome(model.getNome())
+                .email(model.getEmail())
+                .telefone(model.getTelefone())
                 .convenio(convenioDTO)
                 .build();
     }
