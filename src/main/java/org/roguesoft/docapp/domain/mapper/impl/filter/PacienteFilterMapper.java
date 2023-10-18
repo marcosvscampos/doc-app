@@ -10,6 +10,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 
+import java.util.Objects;
+
 @Component
 public class PacienteFilterMapper implements FilterMapper<Paciente> {
 
@@ -22,9 +24,17 @@ public class PacienteFilterMapper implements FilterMapper<Paciente> {
     @Override
     public Specification<Paciente> toSpecification(Filter filter) {
         PacienteFilter pacienteFilter = (PacienteFilter) filter;
-        return Specification.where(
-                PacienteSpecification.cpf(pacienteFilter.getCpf())
-                        .or(PacienteSpecification.rg(pacienteFilter.getRg()))
-        );
+
+        Specification<Paciente> specification = Specification.where(null);
+
+        if(Objects.nonNull(pacienteFilter.getCpf())){
+            specification = specification.or(PacienteSpecification.cpf(pacienteFilter.getCpf()));
+        }
+
+        if(Objects.nonNull(pacienteFilter.getRg())) {
+            specification = specification.or(PacienteSpecification.rg(pacienteFilter.getRg()));
+        }
+
+        return specification;
     }
 }
