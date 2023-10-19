@@ -5,6 +5,8 @@ import org.springframework.data.jpa.domain.Specification;
 
 public class PacienteSpecification {
 
+    private PacienteSpecification(){}
+
     public static Specification<Paciente> cpf(String cpf){
         return (root, cq, cb) ->
                 cb.like(root.get("cpf"), "%" + cpf + "%");

@@ -2,7 +2,6 @@ package org.roguesoft.docapp.application.api;
 
 import lombok.RequiredArgsConstructor;
 import org.roguesoft.docapp.application.dto.ConvenioDTO;
-import org.roguesoft.docapp.application.dto.ConvenioDTO;
 import org.roguesoft.docapp.application.dto.ResponseDTO;
 import org.roguesoft.docapp.application.dto.filter.ConvenioFilter;
 import org.roguesoft.docapp.domain.service.DomainService;
