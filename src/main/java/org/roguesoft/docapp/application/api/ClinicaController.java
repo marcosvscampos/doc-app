@@ -3,7 +3,9 @@ package org.roguesoft.docapp.application.api;
 import lombok.RequiredArgsConstructor;
 import org.roguesoft.docapp.application.dto.ClinicaDTO;
 import org.roguesoft.docapp.application.dto.ResponseDTO;
+import org.roguesoft.docapp.application.dto.filter.ClinicaFilter;
 import org.roguesoft.docapp.domain.service.DomainService;
+import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,5 +30,10 @@ public class ClinicaController {
     @GetMapping(value = "/{cod_clinica}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ClinicaDTO> recuperarConvenioPorId(@PathVariable(value = "cod_clinica") final String id){
         return ResponseEntity.ok(clinicaService.findById(id));
+    }
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Page<ClinicaDTO>> recuperarClinicasPorFiltros(final ClinicaFilter filter){
+        return ResponseEntity.ok(clinicaService.findAll(filter));
     }
 }
