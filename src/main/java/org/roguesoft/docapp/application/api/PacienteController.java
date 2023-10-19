@@ -3,7 +3,9 @@ package org.roguesoft.docapp.application.api;
 import lombok.RequiredArgsConstructor;
 import org.roguesoft.docapp.application.dto.PacienteDTO;
 import org.roguesoft.docapp.application.dto.ResponseDTO;
+import org.roguesoft.docapp.application.dto.filter.PacienteFilter;
 import org.roguesoft.docapp.domain.service.DomainService;
+import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,9 +28,14 @@ public class PacienteController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping(value = "/{pacienteId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<PacienteDTO> recuperarPacientePorId(@PathVariable(name = "pacienteId")final String id){
+    @GetMapping(value = "/{cod_paciente}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<PacienteDTO> recuperarPacientePorId(@PathVariable(name = "cod_paciente")final String id){
         return ResponseEntity.ok(pacienteService.findById(id));
+    }
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Page<PacienteDTO>> recuperarPacientesPorFiltros(final PacienteFilter filter){
+        return ResponseEntity.ok(pacienteService.findAll(filter));
     }
 
 }

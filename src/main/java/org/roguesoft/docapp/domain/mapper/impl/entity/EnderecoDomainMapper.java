@@ -1,4 +1,4 @@
-package org.roguesoft.docapp.domain.mapper.impl;
+package org.roguesoft.docapp.domain.mapper.impl.entity;
 
 import org.roguesoft.docapp.application.dto.EnderecoDTO;
 import org.roguesoft.docapp.application.dto.IndividuoDTO;
@@ -7,6 +7,8 @@ import org.roguesoft.docapp.infrastructure.model.Individuo;
 import java.util.Objects;
 
 public class EnderecoDomainMapper {
+
+    private EnderecoDomainMapper(){}
 
     public static void toModel(final Individuo model, final EnderecoDTO endereco){
         model.setRua(endereco.getRua());

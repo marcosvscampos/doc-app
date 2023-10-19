@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 public class ConvenioDTO extends IndividuoDTO {
 
-    @JsonProperty("cod_individuo")
+    @JsonProperty("cod_convenio")
     private String id;
     private String cnpj;
 

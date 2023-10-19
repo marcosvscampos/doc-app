@@ -2,15 +2,16 @@ package org.roguesoft.docapp.domain.service.impl;
 
 import org.roguesoft.docapp.application.dto.PacienteDTO;
 import org.roguesoft.docapp.application.dto.ResponseDTO;
+import org.roguesoft.docapp.application.dto.filter.Filter;
 import org.roguesoft.docapp.domain.mapper.DomainMapper;
+import org.roguesoft.docapp.domain.mapper.FilterMapper;
 import org.roguesoft.docapp.domain.service.DomainService;
 import org.roguesoft.docapp.infrastructure.model.Paciente;
 import org.roguesoft.docapp.infrastructure.repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 public class PacienteService implements DomainService<PacienteDTO> {
@@ -20,19 +21,23 @@ public class PacienteService implements DomainService<PacienteDTO> {
     @Value("${server.servlet.context-path}")
     private String contextPath;
 
-    private final static String PATH_NAME = "pacientes";
+    private static final String PATH_NAME = "pacientes";
 
     private final DomainMapper<PacienteDTO, Paciente> domainMapper;
 
+    private final FilterMapper<Paciente> filterMapper;
+
     public PacienteService(final PacienteRepository pacienteRepository,
-                           DomainMapper<PacienteDTO, Paciente> domainMapper){
+                           final DomainMapper<PacienteDTO, Paciente> domainMapper,
+                           final FilterMapper<Paciente> filterMapper){
         this.repository = pacienteRepository;
         this.domainMapper = domainMapper;
+        this.filterMapper = filterMapper;
     }
 
     @Override
     @Transactional
-    public ResponseDTO create(PacienteDTO request) {
+    public ResponseDTO create(final PacienteDTO request) {
         Paciente paciente = repository.save(domainMapper.toModel(request));
         return new ResponseDTO(contextPath, PATH_NAME, paciente.getId());
     }
@@ -45,7 +50,11 @@ public class PacienteService implements DomainService<PacienteDTO> {
     }
 
     @Override
-    public List<PacienteDTO> findAll() {
-        return null;
+    public Page<PacienteDTO> findAll(final Filter filter) {
+        Page<Paciente> result = repository.findAll(
+                filterMapper.toSpecification(filter),
+                filterMapper.toPageRequest(filter)
+        );
+        return result.map(domainMapper::toDto);
     }
 }
