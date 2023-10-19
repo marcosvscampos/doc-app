@@ -4,6 +4,8 @@ import org.roguesoft.docapp.application.dto.ClinicaDTO;
 import org.roguesoft.docapp.application.dto.ResponseDTO;
 import org.roguesoft.docapp.application.dto.filter.Filter;
 import org.roguesoft.docapp.domain.mapper.DomainMapper;
+import org.roguesoft.docapp.domain.mapper.FilterMapper;
+import org.roguesoft.docapp.domain.mapper.impl.entity.ClinicaDomainMapper;
 import org.roguesoft.docapp.domain.service.DomainService;
 import org.roguesoft.docapp.infrastructure.model.Clinica;
 import org.roguesoft.docapp.infrastructure.model.Convenio;
@@ -23,6 +25,8 @@ public class ClinicaService implements DomainService<ClinicaDTO> {
 
     private final DomainMapper<ClinicaDTO, Clinica> domainMapper;
 
+    private final FilterMapper<Clinica> filterMapper;
+
     @Value("${server.servlet.context-path}")
     private String contextPath;
 
@@ -30,10 +34,12 @@ public class ClinicaService implements DomainService<ClinicaDTO> {
 
     public ClinicaService(final ClinicaRepository clinicaRepository,
                           final ConvenioRepository convenioRepository,
-                          final DomainMapper<ClinicaDTO, Clinica> clinicaDomainMapper){
+                          final DomainMapper<ClinicaDTO, Clinica> clinicaDomainMapper,
+                          final FilterMapper<Clinica> clinicaFilterMapper){
         this.repository = clinicaRepository;
         this.convenioRepository = convenioRepository;
         this.domainMapper = clinicaDomainMapper;
+        this.filterMapper = clinicaFilterMapper;
     }
 
     @Override
@@ -59,6 +65,10 @@ public class ClinicaService implements DomainService<ClinicaDTO> {
 
     @Override
     public Page<ClinicaDTO> findAll(final Filter filter) {
-        return null;
+        Page<Clinica> result = repository.findAll(
+                filterMapper.toSpecification(filter),
+                filterMapper.toPageRequest(filter)
+        );
+        return result.map(domainMapper::toDto);
     }
 }
