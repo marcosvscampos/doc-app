@@ -44,7 +44,7 @@ public class ConsultaMedica {
 
     @Column(name = "data", nullable = false)
     @Temporal(TemporalType.DATE)
-    private Date date;
+    private Date data;
 
     @Column(name = "horario", nullable = false)
     @Temporal(TemporalType.TIME)

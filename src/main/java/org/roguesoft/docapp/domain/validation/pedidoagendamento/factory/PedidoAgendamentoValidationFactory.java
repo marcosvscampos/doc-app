@@ -2,6 +2,7 @@ package org.roguesoft.docapp.domain.validation.pedidoagendamento.factory;
 
 import lombok.RequiredArgsConstructor;
 import org.roguesoft.docapp.domain.validation.pedidoagendamento.PedidoAgendamentoValidation;
+import org.roguesoft.docapp.domain.validation.pedidoagendamento.impl.ConflitoHorarioExistenteValidation;
 import org.roguesoft.docapp.domain.validation.pedidoagendamento.impl.DataAgendamentoDiaUtilValidation;
 import org.roguesoft.docapp.domain.validation.pedidoagendamento.impl.DataAgendamentoDiasAntecedenciaValidation;
 import org.roguesoft.docapp.domain.validation.pedidoagendamento.impl.HorarioAgendamentoLimiteValidation;
@@ -20,9 +21,12 @@ public class PedidoAgendamentoValidationFactory {
 
     private final DataAgendamentoDiaUtilValidation diaUtilValidation;
 
+    private final ConflitoHorarioExistenteValidation conflitoHorarioExistenteValidation;
+
     public List<PedidoAgendamentoValidation> getInstance(){
         return Arrays.asList(horarioAgendamentoLimiteValidation,
                 diasAntecedenciaValidation,
-                diaUtilValidation);
+                diaUtilValidation,
+                conflitoHorarioExistenteValidation);
     }
 }

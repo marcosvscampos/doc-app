@@ -14,7 +14,7 @@ public class ConsultaMedicaMapper  {
         Time horario = request.parseHorario();
 
         ConsultaMedica consultaMedica = new ConsultaMedica();
-        consultaMedica.setDate(data);
+        consultaMedica.setData(data);
         consultaMedica.setHorario(horario);
         consultaMedica.setStatus("PENDENTE");
         consultaMedica.setValor(BigDecimal.ZERO);
