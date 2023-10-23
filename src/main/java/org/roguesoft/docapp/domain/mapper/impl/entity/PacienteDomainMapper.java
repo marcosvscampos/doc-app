@@ -2,7 +2,7 @@ package org.roguesoft.docapp.domain.mapper.impl.entity;
 
 import org.roguesoft.docapp.application.dto.IndividuoDTO;
 import org.roguesoft.docapp.application.dto.PacienteDTO;
-import org.roguesoft.docapp.application.dto.PedidoAgendamentoDTO;
+import org.roguesoft.docapp.application.dto.agendamento.PedidoAgendamentoDTO;
 import org.roguesoft.docapp.domain.mapper.DomainMapper;
 import org.roguesoft.docapp.domain.mapper.PedidoAgendamentoMapper;
 import org.roguesoft.docapp.infrastructure.model.Individuo;

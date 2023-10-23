@@ -1,6 +1,6 @@
 package org.roguesoft.docapp.domain.service.impl;
 
-import org.roguesoft.docapp.application.dto.PedidoAgendamentoDTO;
+import org.roguesoft.docapp.application.dto.agendamento.PedidoAgendamentoDTO;
 import org.roguesoft.docapp.application.dto.ResponseDTO;
 import org.roguesoft.docapp.application.dto.filter.Filter;
 import org.roguesoft.docapp.domain.mapper.PedidoAgendamentoMapper;

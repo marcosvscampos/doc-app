@@ -27,8 +27,17 @@ public class AgendaConsulta {
     @Column(name = "cod_medico")
     private String medicoId;
 
+    @Column(name = "nome_medico")
+    private String nomeMedico;
+
+    @Column(name = "especialidade")
+    private String especialidade;
+
     @Column(name = "cod_individuo")
     private String pacienteId;
+
+    @Column(name = "nome_paciente")
+    private String nomePaciente;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "data")

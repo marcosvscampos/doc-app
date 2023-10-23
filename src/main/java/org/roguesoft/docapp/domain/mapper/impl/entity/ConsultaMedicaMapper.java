@@ -1,6 +1,6 @@
 package org.roguesoft.docapp.domain.mapper.impl.entity;
 
-import org.roguesoft.docapp.application.dto.PedidoAgendamentoDTO;
+import org.roguesoft.docapp.application.dto.agendamento.PedidoAgendamentoDTO;
 import org.roguesoft.docapp.infrastructure.model.ConsultaMedica;
 
 import java.math.BigDecimal;
