@@ -3,6 +3,7 @@ package org.roguesoft.docapp.infrastructure.utils;
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -38,6 +39,16 @@ public class DateParser {
         LocalTime localTime = time.toLocalTime();
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern(format);
         return localTime.format(timeFormatter);
+    }
+
+    public static LocalDate parseLocalDate(final String value, final String format){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
+        return LocalDate.parse(value, formatter);
+    }
+
+    public static LocalTime parseLocalTime(final String value, final String format){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
+        return LocalTime.parse(value, formatter);
     }
 
 }

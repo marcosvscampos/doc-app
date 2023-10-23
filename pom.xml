@@ -19,6 +19,8 @@
 	<properties>
 		<java.version>17</java.version>
 		<snakeyaml.version>2.1</snakeyaml.version>
+		<api.exception.version>0.0.1-SNAPSHOT</api.exception.version>
+		<spring-cloud.version>2022.0.4</spring-cloud.version>
 	</properties>
 
 	<dependencies>
@@ -33,6 +35,10 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-undertow</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -71,6 +77,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.roguesoft</groupId>
+			<artifactId>mt-api-exception</artifactId>
+			<version>${api.exception.version}</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
@@ -81,6 +93,18 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<build>
 		<plugins>
