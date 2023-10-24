@@ -1,7 +1,6 @@
 package org.roguesoft.docapp.domain.service.impl;
 
 import com.roguesoft.apiexception.exception.NotFoundException;
-import com.roguesoft.apiexception.exception.PreconditionFailedException;
 import org.roguesoft.docapp.application.dto.ResponseDTO;
 import org.roguesoft.docapp.application.dto.agendamento.PedidoAgendamentoDTO;
 import org.roguesoft.docapp.application.dto.filter.Filter;

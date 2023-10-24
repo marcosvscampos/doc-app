@@ -6,7 +6,7 @@ import org.roguesoft.docapp.domain.validation.pedidoagendamento.PedidoAgendament
 import org.springframework.stereotype.Component;
 
 @Component
-public class HorarioLimiteUmaHora implements PedidoAgendamentoValidation {
+public class HorarioLimiteUmaHoraValidation implements PedidoAgendamentoValidation {
     @Override
     public void validate(PedidoAgendamentoDTO request) {
         String [] horarioParts = request.getHorario().split(":");

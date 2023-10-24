@@ -12,17 +12,17 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class ConflitoHorarioExistenteValidation implements PedidoAgendamentoValidation {
+public class HorarioExistenteValidation implements PedidoAgendamentoValidation {
 
     private final ConsultaMedicaRepository consultaMedicaRepository;
 
     @Override
     public void validate(PedidoAgendamentoDTO request) {
-        List<ConsultaMedica> consultasMarcadas = consultaMedicaRepository.findByData(request.parseData());
+        List<ConsultaMedica> consultasMarcadas = consultaMedicaRepository.findByDataAndMedicoId(request.parseData(), request.getMedicoId());
 
         consultasMarcadas.forEach(ct -> {
             if(ct.getData().equals(request.parseData()) && ct.getHorario().equals(request.parseHorario())){
-                throw new PreconditionFailedException("O horario " + request.getHorario() + " no dia " + request.getData() + " já está agendado para outro paciente");
+                throw new PreconditionFailedException("Já existe um paciente com a agenda reservada no horario de " + request.getHorario() + " no dia " + request.getData() + "para o médico de código " + request.getMedicoId());
             }
         });
     }

@@ -2,6 +2,8 @@ package org.roguesoft.docapp.infrastructure.model.queries;
 
 public class FindAgendaPacienteQuery {
 
+    private FindAgendaPacienteQuery(){}
+
     public static final String QUERY_AGENDA_PACIENTE = "SELECT" +
             " tcm.cod_consulta," +
             " tcm.cod_medico," +
