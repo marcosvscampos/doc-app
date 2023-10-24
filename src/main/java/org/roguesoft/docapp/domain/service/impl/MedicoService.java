@@ -1,5 +1,6 @@
 package org.roguesoft.docapp.domain.service.impl;
 
+import com.roguesoft.apiexception.exception.NotFoundException;
 import org.roguesoft.docapp.application.dto.MedicoDTO;
 import org.roguesoft.docapp.application.dto.ResponseDTO;
 import org.roguesoft.docapp.application.dto.filter.Filter;
@@ -45,7 +46,7 @@ public class MedicoService implements DomainService<MedicoDTO> {
          Medico medico = domainMapper.toModel(request);
 
          Clinica clinica = clinicaRepository.findById(request.getClinicaId())
-                .orElseThrow(() -> new RuntimeException("Não foram encontrados clinicas com ID: " + request.getClinicaId()));
+                .orElseThrow(() -> new NotFoundException("Não foram encontrados clinicas com ID: " + request.getClinicaId()));
 
          medico.setClinica(clinica);
 
@@ -56,7 +57,7 @@ public class MedicoService implements DomainService<MedicoDTO> {
     @Override
     public MedicoDTO findById(String id) {
         Medico medico = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Não foram encontrados medicos com ID: " + id));
+                .orElseThrow(() -> new NotFoundException("Não foram encontrados medicos com ID: " + id));
         return domainMapper.toDto(medico);
     }
 

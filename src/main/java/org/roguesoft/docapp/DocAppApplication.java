@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = { "org.roguesoft.docapp" })
+@ComponentScan(basePackages = { "org.roguesoft.docapp", "com.roguesoft.apiexception" })
 public class DocAppApplication {
 
 	public static void main(String[] args) {
