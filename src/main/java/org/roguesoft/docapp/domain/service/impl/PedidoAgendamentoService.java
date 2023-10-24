@@ -71,9 +71,9 @@ public class PedidoAgendamentoService implements DomainService<PedidoAgendamento
         consultaMedica.setMedico(medico);
         consultaMedica.setPaciente(pacienteAgendamento);
 
-        //ConsultaMedica savedConsulta = consultaMedicaRepository.save(consultaMedica);
+        ConsultaMedica savedConsulta = consultaMedicaRepository.save(consultaMedica);
 
-        return new ResponseDTO(contextPath, PATH_NAME, "");
+        return new ResponseDTO(contextPath, PATH_NAME, savedConsulta.getId());
     }
 
     @Override
