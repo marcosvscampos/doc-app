@@ -23,9 +23,10 @@ public class PedidoAgendamentoDTO implements Serializable {
     @JsonProperty("data_nascimento")
     private String dataNascimento;
 
-    @JsonProperty("data")
+    @JsonProperty("data_consulta")
     private String data;
 
+    @JsonProperty("horario_consulta")
     private String horario;
 
     @JsonProperty("cod_medico")

@@ -5,6 +5,7 @@ import org.roguesoft.docapp.domain.validation.pedidoagendamento.PedidoAgendament
 import org.roguesoft.docapp.domain.validation.pedidoagendamento.impl.ConflitoHorarioExistenteValidation;
 import org.roguesoft.docapp.domain.validation.pedidoagendamento.impl.DataAgendamentoDiaUtilValidation;
 import org.roguesoft.docapp.domain.validation.pedidoagendamento.impl.DataAgendamentoDiasAntecedenciaValidation;
+import org.roguesoft.docapp.domain.validation.pedidoagendamento.impl.DataAgendamentoFeriadoValidation;
 import org.roguesoft.docapp.domain.validation.pedidoagendamento.impl.HorarioAgendamentoLimiteValidation;
 import org.springframework.stereotype.Component;
 
@@ -23,10 +24,13 @@ public class PedidoAgendamentoValidationFactory {
 
     private final ConflitoHorarioExistenteValidation conflitoHorarioExistenteValidation;
 
+    private final DataAgendamentoFeriadoValidation dataAgendamentoFeriadoValidation;
+
     public List<PedidoAgendamentoValidation> getInstance(){
         return Arrays.asList(horarioAgendamentoLimiteValidation,
                 diasAntecedenciaValidation,
                 diaUtilValidation,
-                conflitoHorarioExistenteValidation);
+                conflitoHorarioExistenteValidation,
+                dataAgendamentoFeriadoValidation);
     }
 }
