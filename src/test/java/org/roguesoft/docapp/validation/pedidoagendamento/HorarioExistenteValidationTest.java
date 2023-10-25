@@ -33,7 +33,7 @@ class HorarioExistenteValidationTest {
 
     private RequestBuilder<PedidoAgendamentoDTO> requestBuilder;
 
-    private EntityBuilder<ConsultaMedica> entityBuilder;
+    private EntityBuilder<List<ConsultaMedica>> entityBuilder;
 
     @Mock
     private ConsultaMedicaRepository repository;

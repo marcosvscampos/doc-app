@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-public class ConsultaMedicaEntityBuilder implements EntityBuilder<ConsultaMedica> {
+public class ConsultaMedicaEntityBuilder implements EntityBuilder<List<ConsultaMedica>> {
 
     private static final String CONSULTA_MEDICA_ID = "CSN-123456789-TRX";
 
