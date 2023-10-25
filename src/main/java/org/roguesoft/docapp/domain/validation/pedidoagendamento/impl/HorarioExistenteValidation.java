@@ -22,7 +22,10 @@ public class HorarioExistenteValidation implements PedidoAgendamentoValidation {
 
         consultasMarcadas.forEach(ct -> {
             if(ct.getData().equals(request.parseData()) && ct.getHorario().equals(request.parseHorario())){
-                throw new PreconditionFailedException("Já existe um paciente com a agenda reservada no horario de " + request.getHorario() + " no dia " + request.getData() + "para o médico de código " + request.getMedicoId());
+                throw new PreconditionFailedException("Já existe um paciente com a agenda reservada no horario de "
+                        + request.getHorario() + " no dia "
+                        + request.getData() + " para o médico de código "
+                        + request.getMedicoId());
             }
         });
     }
