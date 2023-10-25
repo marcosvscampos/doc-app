@@ -13,7 +13,7 @@ public class FeriadoEntityBuilder implements EntityBuilder<Optional<Feriado>> {
                 .id(100)
                 .dia(Integer.parseInt(params[0]))
                 .mes(Integer.parseInt(params[1]))
-                .description("Feriado de testes")
+                .description("Feriado de teste")
                 .build();
         return Optional.of(feriado);
     }
